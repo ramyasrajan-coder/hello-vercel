@@ -22,3 +22,15 @@ button {
 }
 
 button:hover { opacity: 0.85; }
+
+hr { width: 200px; margin: 2rem auto; border-color: #333; }
+
+input {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #16161d;
+  color: #fff;
+  margin-right: 0.5rem;
+}
