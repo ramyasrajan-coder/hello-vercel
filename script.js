@@ -1,7 +1,16 @@
-const savedName = localStorage.getItem("visitorName");
-if (savedName) {
-  document.getElementById("greeting").textContent = `Hello, ${savedName}!`;
+function timeGreeting() {
+  const hour = new Date().getHours(); // visitor's local time
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
 }
+
+function showGreeting(name) {
+  const text = name ? `${timeGreeting()}, ${name}!` : `${timeGreeting()}!`;
+  document.getElementById("greeting").textContent = text;
+}
+
+showGreeting(localStorage.getItem("visitorName"));
 
 let count = 0;
 document.getElementById("btn").addEventListener("click", () => {
@@ -17,7 +26,7 @@ document.getElementById("apiBtn").addEventListener("click", async () => {
     const data = await res.json();
     out.textContent = `${data.message} (server time: ${data.time})`;
     if (name) {
-      document.getElementById("greeting").textContent = `Hello, ${name}!`;
+      showGreeting(name);
       localStorage.setItem("visitorName", name);
     }
   } catch (err) {
